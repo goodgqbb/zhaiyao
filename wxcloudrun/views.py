@@ -10,11 +10,11 @@ import matplotlib.pyplot as plt
 from imageio import imread
 import  os
 import jieba
+import json
 
 def duixiangcunchu():
   #获取token
   response = requests.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxfb2997f507abf89e&secret=168726b557fb7221c96955cec59b3347',)
-  print()
   data ={
     "env": "prod-0gayxkvve034fe60",
     "path": "ciyunimage/ciyun.jpg"
@@ -60,7 +60,7 @@ def upload():
     wordcloud.to_file('/app/wxcloudrun/ciyun.jpg')
     #all_files = [f for f in os.listdir('/app/wxcloudrun')]
     #return str(all_files) #获取当前工作目录路径
-    #fileid = duixiangcunchu()
-    #return fileid
-    return "ok"
+    fileid = duixiangcunchu()
+    return fileid
+    #return "ok"
     

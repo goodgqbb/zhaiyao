@@ -11,6 +11,7 @@ from imageio import imread
 import  os
 import jieba
 import json
+import requests
 
 def duixiangcunchu():
   #获取token

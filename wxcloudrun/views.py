@@ -38,7 +38,7 @@ def duixiangcunchu():
   response2 = requests.post(response.json()['url'], files=data2)
   return response.json()["file_id"]
 
-@app.route('/', methods=['POST','GET'])
+@app.route('/', methods=['POST'])
 def upload():
 #     all_files = [f for f in os.listdir('/app/wxcloudrun')]
 #     return str(all_files) #获取当前工作目录路径
@@ -60,6 +60,7 @@ def upload():
     wordcloud.to_file('/app/wxcloudrun/ciyun.jpg')
     #all_files = [f for f in os.listdir('/app/wxcloudrun')]
     #return str(all_files) #获取当前工作目录路径
-    fileid = duixiangcunchu()
-    return fileid
+    #fileid = duixiangcunchu()
+    #return fileid
+    return "ok"
     

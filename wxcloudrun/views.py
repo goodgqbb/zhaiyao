@@ -32,7 +32,7 @@ def duixiangcunchu():
     "Signature": (None,response.json()['authorization']),
     'x-cos-security-token': (None,response.json()['token']),
     'x-cos-meta-fileid': (None,response.json()['cos_file_id']),
-    'file': ('ciyun.jpg',open(r"D:\Study\pycharmpro\project\image\1.png","rb"))
+    'file': ('ciyun.jpg',open(r"/app/wxcloudrun/ciyun.jpg","rb"))
   }
   #data2 = json.dumps(data2)
   response2 = requests.post(response.json()['url'], files=data2)
@@ -58,7 +58,7 @@ def upload():
     #显示词云图片
     #plt.show()
     wordcloud.to_file('/app/wxcloudrun/ciyun.jpg')
-    all_files = [f for f in os.listdir('/app/wxcloudrun')]
+    #all_files = [f for f in os.listdir('/app/wxcloudrun')]
     #return str(all_files) #获取当前工作目录路径
     fileid = duixiangcunchu()
     return fileid

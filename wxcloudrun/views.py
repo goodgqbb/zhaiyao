@@ -20,6 +20,7 @@ def duixiangcunchu():
     "env": "prod-0gayxkvve034fe60",
     "path": "ciyunimage/ciyun.jpg"
   }
+  return str(response.json())
   #转json
   data = json.dumps(data)
   response = requests.post("https://api.weixin.qq.com/tcb/uploadfile?access_token="+response.json()['access_token'],data)
@@ -61,7 +62,6 @@ def upload():
     wordcloud.to_file('/app/wxcloudrun/ciyun.jpg')
     #all_files = [f for f in os.listdir('/app/wxcloudrun')]
     #return str(all_files) #获取当前工作目录路径
-    fileid = duixiangcunchu()
-    return fileid
+    return duixiangcunchu()
     #return "ok"
     

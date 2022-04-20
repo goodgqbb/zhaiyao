@@ -63,6 +63,6 @@ def upload():
     wordcloud.to_file('/app/wxcloudrun/ciyun.jpg')
     #all_files = [f for f in os.listdir('/app/wxcloudrun')]
     #return str(all_files) #获取当前工作目录路径
-    return duixiangcunchu(courseid)
+    return str(duixiangcunchu(courseid))
     #return "ok"
     

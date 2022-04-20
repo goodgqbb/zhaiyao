@@ -44,6 +44,9 @@ def duixiangcunchu(courseid):
 def upload():
 #     all_files = [f for f in os.listdir('/app/wxcloudrun')]
 #     return str(all_files) #获取当前工作目录路径
+    file = request.json.get('allcomment')
+    courseid = request.json.get('courseid')
+    return file
     file = request.form.get('allcomment')
     courseid = request.form.get('courseid')
     seg = jieba.lcut(file)

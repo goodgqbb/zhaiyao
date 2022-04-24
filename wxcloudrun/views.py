@@ -60,7 +60,7 @@ def upload():
     values=[json_data['踩'], json_data['赞']]
     plt.pie(values,explode=explode,labels=label,autopct='%3.1f%%')#绘制饼图
     plt.title('本次课程学生投票情况2')
-    plt.save('/app/wxcloudrun/visualization.jpg')
+    plt.savefig('/app/wxcloudrun/visualization.jpg')
     a = duixiangcunchu(courseid)
     b = {"re":a}
     c = json.dumps(b)

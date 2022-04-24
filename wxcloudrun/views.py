@@ -43,7 +43,7 @@ def duixiangcunchu(courseid):
 @app.route('/', methods=['POST'])
 def upload():
     file = request.json.get('comdata')
-    return file
+    return type(file)
     
     a = duixiangcunchu(courseid)
     b = {"re":a}

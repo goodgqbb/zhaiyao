@@ -42,29 +42,9 @@ def duixiangcunchu(courseid):
 
 @app.route('/', methods=['POST'])
 def upload():
-#     all_files = [f for f in os.listdir('/app/wxcloudrun')]
-#     return str(all_files) #获取当前工作目录路径
-    file = request.json.get('allcomment')
-    courseid = request.json.get('courseid')
-#     file = request.form.get('allcomment')
-#     courseid = request.form.get('courseid')
-    seg = jieba.lcut(file)
+    file = request.json.get('comdata')
+    return file
     
-    text = str(seg)
-    bg_pic = imread('/app/wxcloudrun/R-C.jpg')
-    wordcloud = WordCloud(mask=bg_pic,background_color='white',font_path='/app/wxcloudrun/华文楷体.ttf',scale=1.5).generate(text)
-    '''参数说明：
-    mask:设置背景图片   background_color:设置背景颜色
-    scale:按照比例进行放大画布，此处指长和宽都是原来画布的1.5倍
-    generate(text)：根据文本生成词云 '''
-    #plt.imshow(wordcloud)
-    #显示图片时不显示坐标尺寸
-    #plt.axis('off')
-    #显示词云图片
-    #plt.show()
-    wordcloud.to_file('/app/wxcloudrun/ciyun.jpg')
-    #all_files = [f for f in os.listdir('/app/wxcloudrun')]
-    #return str(all_files) #获取当前工作目录路径
     a = duixiangcunchu(courseid)
     b = {"re":a}
     c = json.dumps(b)

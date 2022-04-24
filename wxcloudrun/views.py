@@ -17,12 +17,6 @@ import requests
 
 
 
-# 指定默认字体
-matplotlib.rcParams['font.sans-serif'] = ['SimHei']
-matplotlib.rcParams['font.family'] = 'sans-serif'
-# 解决负号'-'显示为方块的问题
-matplotlib.rcParams['axes.unicode_minus'] = False
-
 def duixiangcunchu(courseid):
   #获取token
   response = requests.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxfb2997f507abf89e&secret=168726b557fb7221c96955cec59b3347',verify=False)
@@ -52,6 +46,13 @@ def duixiangcunchu(courseid):
 
 @app.route('/', methods=['POST'])
 def upload():
+    
+
+    # 指定默认字体
+    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+    matplotlib.rcParams['font.family'] = 'sans-serif'
+    # 解决负号'-'显示为方块的问题
+    matplotlib.rcParams['axes.unicode_minus'] = False
     courseid = request.json.get('courseid')
     file = request.json.get('comdata')
     json_data = file

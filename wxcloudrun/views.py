@@ -30,11 +30,11 @@ def duixiangcunchu(courseid):
 
   data2={
     "Content-Type":(None,".jpg"),
-    "key": (None,"ciyunimage/"+courseid+".jpg"),
+    "key": (None,"visualization/"+courseid+".jpg"),
     "Signature": (None,response.json()['authorization']),
     'x-cos-security-token': (None,response.json()['token']),
     'x-cos-meta-fileid': (None,response.json()['cos_file_id']),
-    'file': ('ciyun.jpg',open(r"/app/wxcloudrun/visualization.jpg","rb"))
+    'file': ('visualization.jpg',open(r"/app/wxcloudrun/visualization.jpg","rb"))
   }
   #data2 = json.dumps(data2)
   response2 = requests.post(response.json()['url'], files=data2,verify=False)

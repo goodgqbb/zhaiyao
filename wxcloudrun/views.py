@@ -44,8 +44,7 @@ def duixiangcunchu(courseid):
 def upload():
     courseid = request.json.get('courseid')
     file = request.json.get('comdata')
-    json_data = type(file)
-    return str(json_data)
+    json_data = file
     plt.rcParams['font.sans-serif']='SimHei'#设置中文显示
     plt.figure(figsize=(10,10))#将画布设定为正方形，则绘制的饼图是正圆
     fig1 = plt.subplot(121)

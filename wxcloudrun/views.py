@@ -49,10 +49,10 @@ def upload():
     
 
     # 指定默认字体
-    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
-    matplotlib.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['font.sans-serif'] = ['SimHei']
+    plt.rcParams['font.family'] = 'sans-serif'
     # 解决负号'-'显示为方块的问题
-    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.rcParams['axes.unicode_minus'] = False
     courseid = request.json.get('courseid')
     file = request.json.get('comdata')
     json_data = file

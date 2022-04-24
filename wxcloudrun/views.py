@@ -51,10 +51,9 @@ def upload():
     courseid = request.json.get('courseid')
     file = request.json.get('comdata')
     json_data = file
-    plt.rcParams['font.sans-serif']='SimHei'#设置中文显示
     plt.figure(figsize=(10,10))#将画布设定为正方形，则绘制的饼图是正圆
     fig1 = plt.subplot(121)
-    label=[u'完全明白', u'一般般', u'不大好', u'完全听不懂']#定义饼图的标签，标签是列表
+    label=[u'完全明白',u'一般般',u'不大好',u'完全听不懂']#定义饼图的标签，标签是列表
     explode=[0.01, 0.01, 0.01, 0.01]#设定各项距离圆心n个半径
     values=[json_data['完全明白'], json_data['一般般'], json_data['不大好'], json_data['完全听不懂']]
     plt.pie(values,explode=explode,labels=label,autopct='%1.1f%%')#绘制饼图

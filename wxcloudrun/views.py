@@ -42,8 +42,6 @@ def duixiangcunchu(courseid):
 
 @app.route('/', methods=['POST'])
 def upload():
-    #     all_files = [f for f in os.listdir('/app/wxcloudrun')]
-#     return str(all_files) #获取当前工作目录路径
     stopwords={'我们','你们','他们','它们','因为','因而','所以','如果','那么',
           '如此','只是','但是','就是','这是','那是','而是','而且','虽然',
           '这些','有些','然后','已经','于是','一种','一个','一样','时候',
@@ -58,25 +56,12 @@ def upload():
     for item in text:
         if item not in stopwords:
             texts.append(item)
-    
-#     file = request.form.get('allcomment')
-#     courseid = request.form.get('courseid')
-    
     text = str(texts)
-    #bg_pic = imread('/app/wxcloudrun/R-C.jpg')
+    bg_pic = imread('/app/wxcloudrun/R-C.jpg')
     wordcloud = WordCloud(mask=bg_pic,background_color='white',font_path='/app/wxcloudrun/华文楷体.ttf',scale=1.5).generate(text)
-    '''参数说明：
-    mask:设置背景图片   background_color:设置背景颜色
-    scale:按照比例进行放大画布，此处指长和宽都是原来画布的1.5倍
-    generate(text)：根据文本生成词云 '''
-    #plt.imshow(wordcloud)
-    #显示图片时不显示坐标尺寸
-    #plt.axis('off')
-    #显示词云图片
-    #plt.show()
+
     wordcloud.to_file('/app/wxcloudrun/filecontent.jpg')
-    #all_files = [f for f in os.listdir('/app/wxcloudrun')]
-    #return str(all_files) #获取当前工作目录路径
+
     a = duixiangcunchu(courseid)
     b = {"re":a}
     c = json.dumps(b)

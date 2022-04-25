@@ -18,7 +18,7 @@ def duixiangcunchu(courseid):
   response = requests.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxfb2997f507abf89e&secret=168726b557fb7221c96955cec59b3347',verify=False)
   data ={
     "env": "prod-0gayxkvve034fe60",
-    "path": "ciyunimage/"+courseid+".jpg"
+    "path": "filecontent/"+courseid+".jpg"
   }
   #return str(response.json())
   #转json
@@ -30,11 +30,11 @@ def duixiangcunchu(courseid):
 
   data2={
     "Content-Type":(None,".jpg"),
-    "key": (None,"ciyunimage/"+courseid+".jpg"),
+    "key": (None,"filecontent/"+courseid+".jpg"),
     "Signature": (None,response.json()['authorization']),
     'x-cos-security-token': (None,response.json()['token']),
     'x-cos-meta-fileid': (None,response.json()['cos_file_id']),
-    'file': ('ciyun.jpg',open(r"/app/wxcloudrun/ciyun.jpg","rb"))
+    'file': ('filecontent.jpg',open(r"/app/wxcloudrun/filecontent.jpg","rb"))
   }
   #data2 = json.dumps(data2)
   response2 = requests.post(response.json()['url'], files=data2,verify=False)
@@ -63,7 +63,7 @@ def upload():
 #     courseid = request.form.get('courseid')
     
     text = str(texts)
-    bg_pic = imread('/app/wxcloudrun/R-C.jpg')
+    #bg_pic = imread('/app/wxcloudrun/R-C.jpg')
     wordcloud = WordCloud(mask=bg_pic,background_color='white',font_path='/app/wxcloudrun/华文楷体.ttf',scale=1.5).generate(text)
     '''参数说明：
     mask:设置背景图片   background_color:设置背景颜色
@@ -74,7 +74,7 @@ def upload():
     #plt.axis('off')
     #显示词云图片
     #plt.show()
-    wordcloud.to_file('/app/wxcloudrun/ciyun.jpg')
+    wordcloud.to_file('/app/wxcloudrun/filecontent.jpg')
     #all_files = [f for f in os.listdir('/app/wxcloudrun')]
     #return str(all_files) #获取当前工作目录路径
     a = duixiangcunchu(courseid)

@@ -46,12 +46,15 @@ def duixiangcunchu(courseid):
 
 @app.route('/', methods=['POST'])
 def upload():
-    
+    font = {
+    'family' : 'SimHei'
+    }
+    matplotlib.rc('font', **font)
 
-    # 指定默认字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    # 解决负号'-'显示为方块的问题
-    plt.rcParams['axes.unicode_minus'] = False
+#     # 指定默认字体
+#     plt.rcParams['font.sans-serif'] = ['SimHei']
+#     # 解决负号'-'显示为方块的问题
+#     plt.rcParams['axes.unicode_minus'] = False
     courseid = request.json.get('courseid')
     file = request.json.get('comdata')
     json_data = file

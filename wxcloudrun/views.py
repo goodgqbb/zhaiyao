@@ -60,18 +60,18 @@ def upload():
     json_data = file
     plt.figure(figsize=(10,10))#将画布设定为正方形，则绘制的饼图是正圆
     fig1 = plt.subplot(121)
-    label=[u'完全明白',u'一般般',u'不大好',u'完全听不懂']#定义饼图的标签，标签是列表
+    label=['Totally understand','So-so','Not good',"don't understand"]#定义饼图的标签，标签是列表
     explode=[0.01, 0.01, 0.01, 0.01]#设定各项距离圆心n个半径
     values=[json_data['完全明白'], json_data['一般般'], json_data['不大好'], json_data['完全听不懂']]
     plt.pie(values,explode=explode,labels=label,autopct='%1.1f%%')#绘制饼图
-    plt.title(u'本次课程学生投票情况1')
+    plt.title('Student voting in this course 1')
 
     fig2 = plt.subplot(122)
-    label=[u'踩', u'赞']#定义饼图的标签，标签是列表
+    label=['bad', 'good']#定义饼图的标签，标签是列表
     explode=[0.01, 0.01]#设定各项距离圆心n个半径
     values=[json_data['踩'], json_data['赞']]
     plt.pie(values,explode=explode,labels=label,autopct='%3.1f%%')#绘制饼图
-    plt.title(u'本次课程学生投票情况2')
+    plt.title('Student voting in this course 2')
     plt.savefig('/app/wxcloudrun/visualization.jpg')
     a = duixiangcunchu(courseid)
     b = {"re":a}

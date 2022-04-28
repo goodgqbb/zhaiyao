@@ -16,3 +16,4 @@ matplotlib==3.4.3
 imageio==2.9.0
 jieba==0.42.1
 requests==2.27.1
+tencentcloud-sdk-python==3.0.625

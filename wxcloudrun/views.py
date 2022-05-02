@@ -34,7 +34,7 @@ def upload():
         clientProfile.httpProfile = httpProfile
         client = nlp_client.NlpClient(cred, "ap-guangzhou", clientProfile)
         tt = cut(text,1990)
-        alldata = ""
+        alldata = []
         for i in tt:
             req = models.AutoSummarizationRequest()
             params = {
@@ -44,7 +44,7 @@ def upload():
             req.from_json_string(json.dumps(params))
 
             resp = client.AutoSummarization(req)
-            alldata = alldata + resp.Summary
+            alldata = alldata.append(resp.Summary)
     
         return json.dumps(alldata, ensure_ascii=False)
 

@@ -44,9 +44,9 @@ def upload():
             req.from_json_string(json.dumps(params))
 
             resp = client.AutoSummarization(req)
-            alldata = alldata.append(resp.Summary)
-    
-        return json.dumps(alldata, ensure_ascii=False)
+            alldata.append(resp.Summary)
+        c = {'re':alldata}
+        return json.dumps(c, ensure_ascii=False)
 
     except TencentCloudSDKException as err:
         print(err)

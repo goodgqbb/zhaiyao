@@ -38,7 +38,8 @@ def upload():
         for i in tt:
             req = models.AutoSummarizationRequest()
             params = {
-                "Text": i
+                "Text": i,
+                "Length":60
             }
             req.from_json_string(json.dumps(params))
 

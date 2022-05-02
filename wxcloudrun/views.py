@@ -18,6 +18,8 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.nlp.v20190408 import nlp_client, models
 
+def cut(obj, sec):
+    return [obj[i:i+sec] for i in range(0,len(obj),sec)]
 
 @app.route('/', methods=['POST'])
 def upload():

@@ -24,26 +24,26 @@ def upload():
     
     text = request.json.get('text')
     try:
-        cred = credential.Credential("AKIDIRN5arujJhrGTTGpBKFwOceTJxNaaMwI", "B792kHagYCg2e4LSN7h3A2jEUWKyOaXG")
+        cred = credential.Credential("AKIDGuMZYJo58wVovncDlBNK6e1FH6g2B7rC", "FLGySpxXuBG9uXx86tTpxpSr31lbFfrq")
         httpProfile = HttpProfile()
         httpProfile.endpoint = "nlp.tencentcloudapi.com"
 
         clientProfile = ClientProfile()
         clientProfile.httpProfile = httpProfile
         client = nlp_client.NlpClient(cred, "ap-guangzhou", clientProfile)
+        tt = cut(text,1990)
+        alldata = ""
+        for i in tt:
+            req = models.AutoSummarizationRequest()
+            params = {
+                "Text": i
+            }
+            req.from_json_string(json.dumps(params))
 
-        req = models.SentimentAnalysisRequest()
-        params = {
-            "Text": text,
-            "Mode": "2class"
-        }
-        req.from_json_string(json.dumps(params))
-
-        resp = client.SentimentAnalysis(req)
-        if 'positive' in resp.to_json_string():
-            return json.dumps(1, ensure_ascii=False)
-        else:
-            return json.dumps(0, ensure_ascii=False)
+            resp = client.AutoSummarization(req)
+            alldata = alldata + resp.Summary
+    
+        return json.dumps(alldata, ensure_ascii=False)
 
     except TencentCloudSDKException as err:
         print(err)

@@ -39,7 +39,7 @@ def upload():
             req = models.AutoSummarizationRequest()
             params = {
                 "Text": i,
-                "Length":150
+                "Length":200
             }
             req.from_json_string(json.dumps(params))
 

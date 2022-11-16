@@ -26,7 +26,7 @@ def upload():
     
     text = request.json.get('text')
     try:
-        cred = credential.Credential("AKIDGuMZYJo58wVovncDlBNK6e1FH6g2B7rC", "FLGySpxXuBG9uXx86tTpxpSr31lbFfrq")
+        cred = credential.Credential("3bZkFHFfLOUg091GPgRkeOVk", "V8P7KmzmvKSKWt4abbLLo1RmbqoC0qTz")
         httpProfile = HttpProfile()
         httpProfile.endpoint = "nlp.tencentcloudapi.com"
 
